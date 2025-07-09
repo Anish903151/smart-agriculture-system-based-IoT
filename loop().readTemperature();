@@ -1,0 +1,13 @@
+float temp = dht.readTemperature();
+float humidity = dht.readHumidity();
+int soilRaw = analogRead(SOIL_PIN);
+int soilPercent = map(soilRaw, 3000, 1000, 0, 100);
+soilPercent = constrain(soilPercent, 0, 100);
+
+// Send to Firebase
+Firebase.RTDB.setFloat(&fbdo, "/temperature", temp);
+Firebase.RTDB.setFloat(&fbdo, "/humidity", humidity);
+Firebase.RTDB.setInt(&fbdo, "/soil_moisture", soilPercent);
+
+Serial.println("Data pushed to Firebase");
+delay(5000);

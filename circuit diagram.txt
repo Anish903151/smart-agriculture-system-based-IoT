@@ -1,0 +1,12 @@
+           +----------------------------+
+           |         ESP32              |
+           |                            |
+           |   GPIO 15 <--- DHT22 DATA |
+           |   GPIO 34 <--- Soil Sensor AOUT
+           |   GPIO 25 ---> Buzzer +   |
+           |   GPIO 21 ---> OLED SDA   |
+           |   GPIO 22 ---> OLED SCL   |
+           |   3.3V/5V ---> VCC (All)   |
+           |   GND     ---> GND (All)   |
+           +----------------------------+
+

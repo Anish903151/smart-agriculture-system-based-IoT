@@ -1,0 +1,17 @@
+WiFi.begin("Your_SSID", "Your_PASSWORD");
+while (WiFi.status() != WL_CONNECTED) {
+  delay(500);
+  Serial.print(".");
+}
+
+Serial.println("WiFi connected!");
+
+config.api_key = API_KEY;
+auth.user.email = USER_EMAIL;
+auth.user.password = USER_PASSWORD;
+config.database_url = DATABASE_URL;
+
+Firebase.begin(&config, &auth);
+Firebase.reconnectWiFi(true);
+
+dht.begin();

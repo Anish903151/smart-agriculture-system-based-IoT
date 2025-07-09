@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Farming Dashboard</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+  <h2>🌱 Smart Farming Live Dashboard</h2>
+  <p>🌡️ Temperature: <span id="temp">--</span> °C</p>
+  <p>💧 Humidity: <span id="hum">--</span> %</p>
+  <p>🌾 Soil Moisture: <span id="soil">--</span> %</p>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "Your_Web_API_Key",
+      authDomain: "your-project.firebaseapp.com",
+      databaseURL: "https://your-project.firebaseio.com",
+      projectId: "your-project-id",
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.database();
+
+    db.ref("temperature").on("value", (snapshot) => {
+      document.getElementById("temp").innerText = snapshot.val();
+    });
+
+    db.ref("humidity").on("value", (snapshot) => {
+      document.getElementById("hum").innerText = snapshot.val();
+    });
+
+    db.ref("soil_moisture").on("value", (snapshot) => {
+      document.getElementById("soil").innerText = snapshot.val();
+    });
+  </script>
+</body>
+</html>
